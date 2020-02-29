@@ -7,9 +7,9 @@ handlers:
 - url: /.*
   script: main.app
 
-- url: /(.*\.(gif|png|jpg))$
-  static_files: static/\1
-  upload: static/.*\.(gif|png|jpg)$
+- url: /
+  static_files: /index.html
+  upload: /index.html
 
 #Libraries
 libraries:
