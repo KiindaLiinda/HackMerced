@@ -7,9 +7,12 @@ handlers:
 - url: /.*
   script: main.app
 
+- url: /style
+  static_dir: style
+
 - url: /
-  static_files: /index.html, /stylesheet.css
-  upload: /index.html, /stylesheet.css
+  static_files: /index.html
+  upload: /index.html
 
 #Libraries
 libraries:
