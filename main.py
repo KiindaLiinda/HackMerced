@@ -20,7 +20,7 @@ class SignupHandler(webapp2.RequestHandler):
         self.response.write(start_template.render())
 class AboutusHandler(webapp2.RequestHandler):
     def get(self):
-        start_template = jinja_current_dir.get_template("/SignUp.html")
+        start_template = jinja_current_dir.get_template("/aboutus.html")
         self.response.write(start_template.render())
 
 # the app configuration section
