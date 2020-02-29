@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
-
-
+<head>
+  <title>Helpers Spot!</title>
+</head>
 <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -20,6 +21,9 @@
   </a>
 </div>
 <style>
+html,body {
+  height:100%;
+}
 /* Style the navigation menu */
 .topnav {
   overflow: hidden;
@@ -86,21 +90,24 @@
   position:relative;
   top:1px;
 }
+.main{
+  background-image: url(https://i.imgur.com/LmexfIm.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
 </style>
 <body>
-<head>
-  <title>Helpers Spot!</title>
-</head>
-
-<body>
-<body style="background-color:white;">
-<h1><Center><font face="verdana" color="black">Welcome to Helpers Spot!</h1>
-
-<center>Helpers Spot allows you to donate food, clothes or other supplies to nearby shelters or to those in need of help.
-  <h1><h1>
-  <img src="https://i.imgur.com/Cy0pLcX.png" style="height: 400px" />
-  <h1></h1>
-  <a href="/signup" class="myButton">Click here to start helping!</a>
+  <div class="main">
+    <br><br>
+    <h1><Center><font face="verdana" color="black">Welcome to Helpers Spot!</h1>
+    <center>Helpers Spot allows you to donate food, clothes or other supplies to nearby shelters or to those in need of help.
+    <h1><h1>
+    <img src="https://i.imgur.com/Cy0pLcX.png" style="height: 400px" />
+    <h1></h1>
+    <a href="/signup" class="myButton">Click here to start helping!</a>
+    <br><br><br>
+    <p></p>
+  </div>
  </body>
  <script>
  function myFunction() {
