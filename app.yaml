@@ -8,8 +8,8 @@ handlers:
   script: main.app
 
 - url: /
-  static_files: /index.html
-  upload: /index.html
+  static_files: /index.html, /stylesheet.css
+  upload: /index.html, /stylesheet.css
 
 #Libraries
 libraries:
