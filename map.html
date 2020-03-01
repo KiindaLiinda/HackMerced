@@ -39,13 +39,14 @@
     <div id="map"></div>
     <div id="legend"><h3>Legend</h3></div>
     <script>
-      var map;
+      var map, infoWindow;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 13,
           center: new google.maps.LatLng(37.300627, -120.482971),
           mapTypeId: 'roadmap'
         });
+        infoWindow = new google.maps.InfoWindow;
 
         var icons = {
           Shelters: {
@@ -127,7 +128,7 @@
           ];
 
 
-        // Create markers.
+        //Create markers.
         features.forEach(function(feature) {
           var marker = new google.maps.Marker({
             position: feature.position,
