@@ -111,7 +111,7 @@
       }
 
       function createInfoMap(pos, infoMapContent, address, description, phonenumber){
-        if(infoMapContent == "Homes Shelter"){
+        if(infoMapContent == "Homes Shelter "){
           infoWindow.setContent(infoMapContent + address);
         }
         else{infoWindow.setContent(infoMapContent);}
@@ -194,7 +194,7 @@ function createIcons(){
           },{
             position: new google.maps.LatLng(37.321450, -120.488179),
             type: 'Shelters',
-            name: "Homes Shelter",
+            name: "Homes Shelter ",
             address: "3161-3223 R St, Merced, CA 95348",
             description: "If you\'re in need of a place to stay please feel free to show up between 8am-6pm"
           },{
@@ -270,7 +270,7 @@ function createIcons(){
           var name = type.name;
           var icon = type.icon;
           var div = document.createElement('div');
-          div.innerHTML = '<img src="' + icon + '"> ' + name;
+          div.innerHTML = '<img src="' + icon + ' width=\'5px\' height=\'5px\'"> ' + name;
           legend.appendChild(div);
         }
 
