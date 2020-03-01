@@ -56,6 +56,14 @@
         map.setCenter(pos);
       }
 
+      function createInfoMap(pos){
+
+        infoWindow.setContent("Hello World");
+        infoWindow.setPosition(pos);
+        infoWindow.open(marker, map);
+
+      }
+
       function onGetCurrentPositionFailure() {
         handleLocationError(true, infoWindow, map.getCenter());
       }
@@ -67,12 +75,14 @@
           mapTypeId: 'roadmap'
         });
         infoWindow = new google.maps.InfoWindow;
+        infoWindowFeatures = new google.maps.InfoWindow;
 
 
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(onGetCurrentPositionSuccess, onGetCurrentPositionFailure);
 
           createIcons();
+
         } else {
           // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
@@ -86,6 +96,7 @@
                               'Error: Your browser doesn\'t support geolocation.');
 
         infoWindow.open(map);
+
         }
 
 function createIcons(){
@@ -176,12 +187,14 @@ function createIcons(){
             icon: icons[feature.type].icon,
             map: map
           });
+        while(true){
+          marker.addListener('click', function(){
+            createInfoMap();
         });
+      };
+});
 
-        marker.addLisener("click", function(){
-          infoWindow.setContent = feature.name();
 
-        });
 
 
 
