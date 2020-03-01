@@ -38,8 +38,28 @@
   <body>
     <div id="map"></div>
     <div id="legend"><h3>Legend</h3></div>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzyVfBH_6Aj82sH2zFSucj7t6m9vGsvg4&callback=initMap">
+    </script>
     <script>
       var map;
+
+      function onGetCurrentPositionSuccess(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+
+        infoWindow.setPosition(pos);
+        infoWindow.setContent('Location found.');
+        infoWindow.open(map);
+        map.setCenter(pos);
+      }
+
+      function onGetCurrentPositionFailure() {
+        handleLocationError(true, infoWindow, map.getCenter());
+      }
+
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 13,
@@ -50,19 +70,9 @@
 
 
         if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
+          navigator.geolocation.getCurrentPosition(onGetCurrentPositionSuccess, onGetCurrentPositionFailure);
 
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            infoWindow.open(map);
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
+          createIcons();
         } else {
           // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
@@ -74,9 +84,11 @@
         infoWindow.setContent(browserHasGeolocation ?
                               'Error: The Geolocation service failed.' :
                               'Error: Your browser doesn\'t support geolocation.');
+
         infoWindow.open(map);
 
-
+        }
+function createIcons(){
         var icons = {
           Shelters: {
             name: 'Shelters',
@@ -179,8 +191,6 @@
         map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
       }
     </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzyVfBH_6Aj82sH2zFSucj7t6m9vGsvg4&callback=initMap">
-    </script>
+
   </body>
 </html>
