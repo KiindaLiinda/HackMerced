@@ -18,9 +18,14 @@ class SignupHandler(webapp2.RequestHandler):
     def get(self):
         start_template = jinja_current_dir.get_template("/SignUp.html")
         self.response.write(start_template.render())
+class AboutusHandler(webapp2.RequestHandler):
+    def get(self):
+        start_template = jinja_current_dir.get_template("/aboutus.html")
+        self.response.write(start_template.render())
 
 # the app configuration section
 app = webapp2.WSGIApplication([
     ('/', HomepageHandler), #this maps the root url to the Main Page Handler
-    ('/signup', SignupHandler)
+    ('/signup', SignupHandler),
+    ('/aboutus', AboutusHandler)
 ], debug=True)
