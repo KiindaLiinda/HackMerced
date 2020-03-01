@@ -56,9 +56,11 @@
         map.setCenter(pos);
       }
 
-      function createInfoMap(pos){
-
-        infoWindow.setContent("Hello World");
+      function createInfoMap(pos, infoMapContent, address, description, phonenumber){
+        if(infoMapContent == "Homes Shelter"){
+          infoWindow.setContent(infoMapContent + address);
+        }
+        else{infoWindow.setContent(infoMapContent);}
         infoWindow.setPosition(pos);
         infoWindow.open(marker, map);
 
@@ -132,50 +134,65 @@ function createIcons(){
             position: new google.maps.LatLng(37.29, -120.47),
             type: 'Shelters',
             name: "D Street Homeless Shelter",
+            address: "317 E 15th St, Merced, CA 95341",
+            phoneNum: "(209)725-8188",
+            description: "If you\'re in need of a place to stay please feel free to show up between 8am-6pm"
           },{
             position: new google.maps.LatLng(37.321450, -120.488179),
             type: 'Shelters',
             name: "Homes Shelter",
+            address: "3161-3223 R St, Merced, CA 95348",
+            description: "If you\'re in need of a place to stay please feel free to show up between 8am-6pm"
           },{
             position: new google.maps.LatLng(37.305117, -120.484213),
             type: 'ComOrgs',
             name: "Merced Rescue Mission",
+            address: ""
           },{
             position: new google.maps.LatLng(37.305909, -120.494842),
             type: 'ComOrgs',
             name: "Community Action Agency",
+            address: ""
           },{
             position: new google.maps.LatLng(37.301941, -120.483972),
             type: 'ComOrgs',
             name: "United Way",
+            address: ""
           },{
             position: new google.maps.LatLng(37.296, -120.438792),
             type: 'Nomad',
             name: "Dwight K. Shrute",
+            address: ""
           },{
             position: new google.maps.LatLng(37.297, -120.438792),
             type: 'Nomad',
             name: "Mose Shrute",
+            address: ""
           },{
             position: new google.maps.LatLng(37.3080, -120.64738),
             type: 'helpMate',
             name: "Sarah Padilla",
+            address: ""
           },{
             position: new google.maps.LatLng(38.1612, -120.3247),
             type: 'helpMate',
             name: "Harjot Grewal",
+            address: ""
           },{
             position: new google.maps.LatLng(37.87260, -120.36664),
             type: 'helpMate',
             name: "Linda Garcia",
+            address: ""
           },{
             position: new google.maps.LatLng(36.99789, -120.10786),
             type: 'helpMate',
             name: "Sabir Kirpal",
+            address: ""
           },{
             position: new google.maps.LatLng(37.91539, -120.470845),
             type: 'ComOrgs',
-            name: "Goodwill"
+            name: "Goodwill",
+            address: ""
           }
           ];
 
@@ -187,11 +204,10 @@ function createIcons(){
             icon: icons[feature.type].icon,
             map: map
           });
-        while(true){
           marker.addListener('click', function(){
-            createInfoMap();
+            infoWindow.open(map);
+            createInfoMap(feature.position, feature.name, feature.address, feature.description, feature.phoneNum);
         });
-      };
 });
 
 
