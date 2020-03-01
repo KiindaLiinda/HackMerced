@@ -59,9 +59,14 @@
         if(infoMapContent == "Homes Shelter "){
           infoWindow.setContent(infoMapContent + address);
         }
-        else{infoWindow.setContent(infoMapContent);}
+        else{infoWindow.setContent(infoMapContent + address + description + phonenumber);}
+        if(description != undefined){
+          if(phonenumber != undefined){
         infoWindow.setPosition(pos);
-        infoWindow.open(marker, map);
+        infoWindow.open(marker, map);}}
+          else{
+            infoWindow.setContent(infoMapContent);
+          }
 
       }
 
@@ -135,63 +140,76 @@ function createIcons(){
             name: "D Street Homeless Shelter",
             address: "317 E 15th St, Merced, CA 95341",
             phoneNum: "(209)725-8188",
-            description: "If you\'re in need of a place to stay please feel free to show up between 8am-6pm"
+            description: "If you\'re in need of a place to stay please feel free to show up between 8am-6pm",
+            friend:""
           },{
             position: new google.maps.LatLng(37.321450, -120.488179),
             type: 'Shelters',
             name: "Homes Shelter ",
             address: "3161-3223 R St, Merced, CA 95348",
-            description: "If you\'re in need of a place to stay please feel free to show up between 8am-6pm"
+            description: "If you\'re in need of a place to stay please feel free to show up between 8am-6pm",
+            friend:""
           },{
             position: new google.maps.LatLng(37.305117, -120.484213),
             type: 'ComOrgs',
             name: "Merced Rescue Mission",
-            address: ""
+            address: "",
+            friend:""
           },{
             position: new google.maps.LatLng(37.305909, -120.494842),
             type: 'ComOrgs',
             name: "Community Action Agency",
-            address: ""
+            address: "",
+            friend:""
           },{
             position: new google.maps.LatLng(37.301941, -120.483972),
             type: 'ComOrgs',
             name: "United Way",
-            address: ""
+            address: "",
+            friend:""
+
           },{
             position: new google.maps.LatLng(37.296, -120.438792),
             type: 'Nomad',
             name: "Dwight K. Shrute",
-            address: ""
+            address: "",
+            friend:"Dwight K. Shrute is a friend! Click Here to deliver now!"
           },{
             position: new google.maps.LatLng(37.297, -120.438792),
             type: 'Nomad',
-            name: "Mose Shrute",
-            address: ""
+            name: "Toby Flenderson",
+            address: "NULL",
+            friend:"Toby Flenderson has not accepted your friend request yet!"
           },{
             position: new google.maps.LatLng(37.3080, -120.64738),
             type: 'helpMate',
             name: "Sarah Padilla",
-            address: ""
+            address: "",
+            friend:""
           },{
             position: new google.maps.LatLng(38.1612, -120.3247),
             type: 'helpMate',
             name: "Harjot Grewal",
-            address: ""
+            address: "",
+            friend:""
           },{
             position: new google.maps.LatLng(37.87260, -120.36664),
             type: 'helpMate',
             name: "Linda Garcia",
-            address: ""
+            address: "",
+            friend:""
           },{
             position: new google.maps.LatLng(36.99789, -120.10786),
             type: 'helpMate',
             name: "Sabir Kirpal",
-            address: ""
+            address: "",
+            friend:""
           },{
             position: new google.maps.LatLng(37.91539, -120.470845),
             type: 'ComOrgs',
             name: "Goodwill",
-            address: ""
+            address: "",
+            friend:""
           }
           ];
 
@@ -205,7 +223,11 @@ function createIcons(){
           });
           marker.addListener('click', function(){
             infoWindow.open(map);
-            createInfoMap(feature.position, feature.name, feature.address, feature.description, feature.phoneNum);
+            if (feature.type != "Nomad"){
+            createInfoMap(feature.position, feature.name, feature.address, feature.description, feature.phoneNum, null);}
+            else{
+            createInfoMap(getCurrentPosition(), feature.name, feature.address, feature.description, feature.phoneNum, feature.friend);}
+
         });
 });
 
