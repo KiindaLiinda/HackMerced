@@ -86,8 +86,8 @@
                               'Error: Your browser doesn\'t support geolocation.');
 
         infoWindow.open(map);
-
         }
+
 function createIcons(){
         var icons = {
           Shelters: {
@@ -177,6 +177,13 @@ function createIcons(){
             map: map
           });
         });
+
+        marker.addLisener("click", function(){
+          infoWindow.setContent = feature.name();
+
+        });
+
+
 
         var legend = document.getElementById('legend');
         for (var key in icons) {
